@@ -21,7 +21,7 @@ public class EmailService {
         mensagem.setTo(emailDto.email());
         mensagem.setSubject("Teste mensagem");
         mensagem.setText(emailDto.texto());
-
+        javaMailSender.send(mensagem);
     }
 
 }
