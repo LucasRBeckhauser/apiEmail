@@ -20,3 +20,7 @@ public class EmailController {
     emailService.enviarEmail(emailDto);
     }
 }
+
+// Lembrando que ao criar um usuário novo deve ser criado um registro nessa fila de e-mail.
+//Entao será criado um e-mail e logo após, será enviado um registro de e-mail
+//Então na hora de fazer o post, chamará o usuário e depois o e-mail será enviado
