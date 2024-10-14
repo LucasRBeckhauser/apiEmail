@@ -1,7 +1,9 @@
 package br.com.lucasBeckhauser.MailSender.controller;
 
-import br.com.lucasBeckhauser.MailSender.dto.EmailDto;
-import br.com.lucasBeckhauser.MailSender.service.EmailService;
+import br.com.lucasBeckhauser.MailSender.dto.FilaEmailDto;
+import br.com.lucasBeckhauser.MailSender.dto.UserDto;
+import br.com.lucasBeckhauser.MailSender.service.FilaEmailService;
+import br.com.lucasBeckhauser.MailSender.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,15 +11,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping ("/email")
-public class EmailController {
+@RequestMapping ("/filaEmails")
+public class FilaEmailController {
 
     @Autowired
-    private EmailService emailService;
+    private FilaEmailService filaEmailService;
+
+    @Autowired
+    private UserService userService;
 
     @PostMapping
-    public void enviarEMail (@RequestBody EmailDto emailDto) {
-    emailService.enviarEmail(emailDto);
+    public void enviarEMail (@RequestBody FilaEmailDto filaEmail, UserDto user) {
+
+
+
     }
 }
 

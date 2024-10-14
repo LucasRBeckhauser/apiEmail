@@ -13,17 +13,10 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public ResponseEntity<User> CriarUsuario (UserDto userDto) {
-        User user = new User(
-                userDto.email(),
-                userDto.nome()
-        );
+    public ResponseEntity<UserDto> criarUsuario(UserDto userDto) {
+        User user = userDto.toEntity();
         userRepository.save(user);
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(UserDto.fromEntity(user));
     }
-
-
-
-
-
 }
+
