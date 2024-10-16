@@ -11,4 +11,16 @@ public record UserDto(String nome, String email) {
     public User toEntity() {
         return new User(this.email, this.nome);
     }
+
+    @Override
+    public String nome() {
+        return nome;
+    }
+
+    @Override
+    public String email() {
+        return email;
+    }
+
+
 }
