@@ -19,16 +19,11 @@ public class FilaEmailController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto) {
+    public ResponseEntity<Void> createUserWithEmail(@RequestBody UserDto userDto, @RequestBody FilaEmailDto filaEmailDto) {
         // Criar o usuário
-        ResponseEntity<UserDto> userResponse = userService.criarUsuario(userDto);
+        userService.criarUsuario(userDto);
 
         // Criar e salvar o e-mail na fila
-        FilaEmailDto filaEmailDto = new FilaEmailDto(
-                userDto.email(),
-                "Bem-vindo, " + userDto.nome(),
-                "Obrigado por se cadastrar!"
-        );
         filaEmailService.salvarEmailNaFila(filaEmailDto);
 
         // Enviar e-mails e depois apagar do banco de dados
