@@ -39,7 +39,6 @@ public class FilaEmailService {
                 mensagem.setSubject(emailDto.assunto());
                 mensagem.setText(emailDto.mensagem());
                 javaMailSender.send(mensagem);
-
                 // Apagar o registro após o envio
                 filaEmailRepository.delete(email);
                 resultado.append("Email enviado e registro removido para: ").append(emailDto.destinatario()).append("\n");
