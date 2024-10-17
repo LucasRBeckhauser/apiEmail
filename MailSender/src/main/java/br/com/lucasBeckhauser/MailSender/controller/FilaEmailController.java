@@ -18,4 +18,6 @@ public class FilaEmailController {
         filaEmailService.salvarEmailNaFila(emailDto);
         return ResponseEntity.ok().build();
     }
+
+
 }

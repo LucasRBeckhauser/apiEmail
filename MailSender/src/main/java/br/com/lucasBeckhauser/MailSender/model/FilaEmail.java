@@ -1,10 +1,9 @@
 package br.com.lucasBeckhauser.MailSender.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 @Entity(name = "fila_email")
-public class FilaEmail extends EntityId{
+public class FilaEmail extends EntityId {
 
     @Column(name = "destinatario", nullable = false)
     private String destinatario;
@@ -15,16 +14,17 @@ public class FilaEmail extends EntityId{
     @Column(name = "mensagem", nullable = false)
     private String mensagem;
 
-    @Column (name = "enviado", unique = false)
-    private boolean enviado = false;
+    @Column(name = "enviado")
+    private boolean enviado;
 
     public FilaEmail() {
+        this.enviado = false;
     }
 
-    public FilaEmail(String mensagem, String assunto, String destinatario) {
-        this.mensagem = mensagem;
-        this.assunto = assunto;
+    public FilaEmail(String destinatario, String assunto, String mensagem) {
         this.destinatario = destinatario;
+        this.assunto = assunto;
+        this.mensagem = mensagem;
     }
 
     public String getDestinatario() {
@@ -59,5 +59,3 @@ public class FilaEmail extends EntityId{
         this.enviado = enviado;
     }
 }
-
-
