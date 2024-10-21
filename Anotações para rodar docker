@@ -1,0 +1,37 @@
+2. Construir a imagem
+
+Para criar a imagem do projeto pela primeira vez ou após uma alteração, rode:
+
+docker build -t mailsender-app .
+
+Este comando vai criar a imagem do seu projeto com o nome mailsender-app.
+
+3. Rodar o container
+
+Após criar a imagem, você pode rodar o container com o comando:
+
+docker run -p 8080:8080 mailsender-app
+
+Isso vai rodar sua aplicação Spring Boot dentro do container, exposta na porta 8080.
+
+4. Atualizar a imagem e o container após alterações no código
+
+Sempre que fizer alterações no código do projeto, o processo para atualizar o container será o seguinte:
+
+    Recriar a imagem: Quando fizer alterações no código, você precisará reconstruir a imagem Docker:
+
+
+docker build -t mailsender-app .
+
+Remover o container antigo: Se o container estiver rodando, pare e remova-o:
+
+docker ps -q --filter "ancestor=mailsender-app" | xargs docker stop
+docker ps -a -q --filter "ancestor=mailsender-app" | xargs docker rm
+
+Isso vai parar e remover os containers que estão usando a imagem anterior.
+
+Rodar o novo container: Agora, rode novamente o container com a imagem atualizada:
+
+bash
+
+docker run -p 8080:8080 mailsender-app
