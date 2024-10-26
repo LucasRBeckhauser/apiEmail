@@ -1,5 +1,24 @@
 spring:
+  application:
+    name: MailSender
   datasource:
-    url: jdbc:postgresql://postgres-docker:5432/fila_email
-    password: 4779213
+    url: jdbc:postgresql://exemplo-postgres:5432/fila_email
     username: postgres
+    password: 4779213
+    driver-class-name: org.postgresql.Driver
+
+  mail:
+    host: sandbox.smtp.mailtrap.io
+    port: 587
+    username: 7b3f63e6dea9de
+    password: a511c1d22dbe08
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    user: postgres
+    password: 4779213
